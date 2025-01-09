@@ -107,10 +107,12 @@
 1.   辨证任务准确率（acc of syndrome differentiation）
 
      计算公式如下：
-     $$
-     syndrome_{acc} = \frac{NUM(y \cap \hat{y} )}{NUM(y)}
-     $$
-     其中，$y$是数据集样本中真实证型的列表和$\hat{y}$是模型预测的数据集样本中的证型列表；$NUM(x)$代表数量函数，用来计算$x$的数量。
+
+     ```math
+     $$syndrome_{acc} = \frac{NUM(y \cap \hat{y} )}{NUM(y)}$$
+     ```
+
+     其中， $y$ 是数据集样本中真实证型的列表和 $\hat{y}$ 是模型预测的数据集样本中的证型列表； $NUM(x)$ 代表数量函数，用来计算 $x$ 的数量。
 
 2.   辨病任务准确率（acc of disease differentiation）
 
@@ -120,13 +122,13 @@
      $$disease_{acc} = \frac{NUM(y \cap \hat{y} )}{NUM(y)}$$
      ```
 
-     其中，$y$是数据集样本中真实疾病的列表和$\hat{y}$是模型预测的数据集样本中的疾病列表；$NUM(x)$代表数量函数，用来计算$x$的数量。
+     其中， $y$ 是数据集样本中真实疾病的列表和$\hat{y}$是模型预测的数据集样本中的疾病列表； $NUM(x)$ 代表数量函数，用来计算$x$的数量。
 
 3.   评价总指标
-     $$
-     task1\_acc = \frac{1}{2}(syndrome_{acc} + disease_{acc})
-     $$
      
+     ```math
+     $$task1\_acc = \frac{1}{2}(syndrome_{acc} + disease_{acc})$$
+     ```
 
 # 三、子任务2：中药处方推荐（TCM Prescription Recommendation）
 ## 背景介绍
@@ -159,48 +161,62 @@
 1.   Jaccard相似系数（Jaccard Similarity Coefficient）
 
      Jaccard相似系数用于衡量两个集合的相似度，Jaccard相似系数的取值范围为 [0, 1]，值越大表示预测结果与真实标签的相似度越高。计算公式如下：
-     $$
-     Jaccard(y, \hat{y}) = \frac{NUM(y \cap \hat{y})}{NUM(y \cup \hat{y})}
-     $$
-     其中，$y$是真实处方，$\hat{y}$是模型预测的处方，$NUM(x)$代表数量函数，用来计算$x$的数量。
+
+     ```math
+     $$Jaccard(y, \hat{y}) = \frac{NUM(y \cap \hat{y})}{NUM(y \cup \hat{y})}$$
+     ```
+
+     
+
+     其中， $y$ 是真实处方， $\hat{y}$ 是模型预测的处方， $NUM(x)$ 代表数量函数，用来计算 $x$ 的数量。
 
 2.   Recall
 
      Recall 用于衡量预测结果中，与真实标签匹配的数量占所有真实标签总数的比例。计算公式如下：
-     $$
-     Recall(y, \hat{y}) = \frac{NUM(y \cap \hat{y})}{NUM(y)}
-     $$
-     其中，$y$是真实处方，$\hat{y}$是模型预测的处方，$NUM(x)$代表数量函数，用来计算$x$的数量。
+
+     ```math
+     $$Recall(y, \hat{y}) = \frac{NUM(y \cap \hat{y})}{NUM(y)}$$
+     ```
+
+     其中， $y$ 是真实处方， $\hat{y}$ 是模型预测的处方， $NUM(x)$ 代表数量函数，用来计算 $x$ 的数量。
 
 3.   Precision
 
      Precision 用于衡量预测结果中，与真实标签匹配的数量占预测标签总数的比例。计算公式如下：
-     $$
-     Precision(y,\hat{y}) = \frac{NUM(y \cap \hat{y})}{NUM(\hat{y})}
-     $$
-     其中，$y$是真实处方，$\hat{y}$是模型预测的处方，$NUM(x)$代表数量函数，用来计算$x$的数量。
+
+     ```math
+     $$Precision(y,\hat{y}) = \frac{NUM(y \cap \hat{y})}{NUM(\hat{y})}$$
+     ```
+
+     其中， $y$ 是真实处方， $\hat{y}$ 是模型预测的处方， $NUM(x)$ 代表数量函数，用来计算 $x$ 的数量。
 
 4.   F1分数
 
      F1分数是Precision和Recall的调和平均数，用于综合衡量模型的准确性和召回率。计算公式如下：
-     $$
-     {F1}(y, \hat{y}) = 2 \cdot \frac{\text{Precision}(y, \hat{y}) \cdot \text{Recall}(y, \hat{y})}{\text{Precision}(y, \hat{y}) + \text{Recall}(y, \hat{y})}
-     $$
-     其中，$y$是真实处方，$\hat{y}$是模型预测的处方。
+
+     ```math
+     $${F1}(y, \hat{y}) = 2 \cdot \frac{\text{Precision}(y, \hat{y}) \cdot \text{Recall}(y, \hat{y})}{\text{Precision}(y, \hat{y}) + \text{Recall}(y, \hat{y})}$$
+     ```
+
+     其中， $y$ 是真实处方， $\hat{y}$ 是模型预测的处方。
 
 5.   药物平均数量(Avg Herb)
 
      药物平均数量用于衡量模型推荐的中药方剂数量与真实标签数量的接近程度。计算方法是通过比较模型推荐的中药数量和真实标签的中药数量，并计算它们的匹配度。匹配度越高，表示模型推荐的中药数量越接近真实标签的数量。计算公式如下：
-     $$
-     AVG(y, \hat{y}) = 1 - \frac{\lvert NUM(y) - NUM(\hat{y}) \rvert}{max( NUM(y) , NUM(\hat{y}) )}
-     $$
-     其中，$y$是真实处方，$\hat{y}$是模型预测的处方。$NUM(x)$代表数量函数，用来计算$x$的数量，$max⁡(a,b)$代表取$a$,$b$中的最大值，$|x|$代表计算$x$的绝对值。
+
+     ```math
+     $$AVG(y, \hat{y}) = 1 - \frac{\lvert NUM(y) - NUM(\hat{y}) \rvert}{max( NUM(y) , NUM(\hat{y}) )}$$
+     ```
+
+     其中， $y$ 是真实处方， $\hat{y}$ 是模型预测的处方。 $NUM(x)$ 代表数量函数，用来计算 $x$ 的数量， $max⁡(a,b)$ 代表取 $a$ , $b$ 中的最大值， $|x|$ 代表计算 $x$ 的绝对值。
 
 6.   评价总指标
-     $$
-     task2\_score = \frac{1}{3} \cdot \frac{1}{N}\sum_{i=1}^N{[Jaccard(y_i, \hat{y_i}) + {F1}(y_i, \hat{y_i}) + AVG(y_i, \hat{y_i})]}
-     $$
-     其中$y_i$是第i条样本的真实处方，$\hat{y_i}$是模型预测的第$i$条样本的处方，$N$表示样本总数。
+     
+     ```math
+     $$task2\_score = \frac{1}{3} \cdot \frac{1}{N}\sum_{i=1}^N{[Jaccard(y_i, \hat{y_i}) + {F1}(y_i, \hat{y_i}) + AVG(y_i, \hat{y_i})]}$$
+     ```
+     
+     其中 $y_i$ 是第 $i$ 条样本的真实处方， $\hat{y_i}$ 是模型预测的第$i$条样本的处方， $N$ 表示样本总数。
 
 # 四、结果提交
 
@@ -227,9 +243,11 @@ B榜评测结果使用docker镜像提交，参赛队伍需要将模型打包成d
 1.   所有测评任务均采用百分制分数显示，小数点后保留2位。
 
 2.   系统排名取各项任务得分的加权和（两个子任务权重依次为0.5，0.5），即：
-     $$
-     task\_score = 0.5\cdot task1\_acc + 0.5 \cdot task2\_score
-     $$
+     
+     ```math
+     $$task\_score = 0.5\cdot task1\_acc + 0.5 \cdot task2\_score$$
+     ```
+     
      如果某项任务未提交，默认分数为0，仍参与到系统最终得分的计算。
 
 # 六、Baseline
