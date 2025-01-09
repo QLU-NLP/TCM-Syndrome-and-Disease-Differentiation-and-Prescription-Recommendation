@@ -120,11 +120,11 @@
 
      $$disease_{acc} = \frac{NUM(y \cap \hat{y} )}{NUM(y)}$$
 
-     其中， $y$ 是数据集样本中真实疾病的列表和$\hat{y}$是模型预测的数据集样本中的疾病列表； $NUM(x)$ 代表数量函数，用来计算$x$的数量。
+     其中， $y$ 是数据集样本中真实疾病的列表和 $\hat{y}$ 是模型预测的数据集样本中的疾病列表； $NUM(x)$ 代表数量函数，用来计算$x$的数量。
 
 3.   评价总指标
      
-     $$task1\_acc = \frac{1}{2}(syndrome_{acc} + disease_{acc})$$
+     $$task1 \textunderscore acc = \frac{1}{2}(syndrome_{acc} + disease_{acc})$$
      
 
 # 三、子任务2：中药处方推荐（TCM Prescription Recommendation）
@@ -197,9 +197,9 @@
 
 6.   评价总指标
      
-     $$task2\_score = \frac{1}{3} \cdot \frac{1}{N}\sum_{i=1}^N{[Jaccard(y_i, \hat{y_i}) + {F1}(y_i, \hat{y_i}) + AVG(y_i, \hat{y_i})]}$$
+     $$task2 \textunderscore score = \frac{1}{3} \cdot \frac{1}{N}\sum_{i=1}^N{[Jaccard(y_i, \hat{y_i}) + {F1}(y_i, \hat{y_i}) + AVG(y_i, \hat{y_i})]}$$
      
-     其中 $y_i$ 是第 $i$ 条样本的真实处方， $\hat{y_i}$ 是模型预测的第$i$条样本的处方， $N$ 表示样本总数。
+     其中 $y_i$ 是第 $i$ 条样本的真实处方， $\hat{y_i}$ 是模型预测的第 $i$ 条样本的处方， $N$ 表示样本总数。
 
 # 四、结果提交
 
@@ -227,7 +227,7 @@ B榜评测结果使用docker镜像提交，参赛队伍需要将模型打包成d
 
 2.   系统排名取各项任务得分的加权和（两个子任务权重依次为0.5，0.5），即：
      
-     $$task\_score = 0.5\cdot task1\_acc + 0.5 \cdot task2\_score$$
+     $$task \textunderscore score = 0.5\cdot task1 \textunderscore acc + 0.5 \cdot task2 \textunderscore score$$
      
      如果某项任务未提交，默认分数为0，仍参与到系统最终得分的计算。
 
